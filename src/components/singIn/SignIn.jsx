@@ -77,7 +77,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        signInOn: () => dispatch({type: ClOSE_SIGN_IN}),
+        signInOn: () => dispatch({type: CLOSE_SIGN_IN}),
         entrance: (user) => dispatch({type: ENTRANCE, payload: user}),
         openAlert: () => dispatch({type: OPEN_ALERT})
     }

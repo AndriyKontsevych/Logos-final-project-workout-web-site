@@ -1,4 +1,4 @@
-import { CLOSE_ALERT, ClOSE_SIGN_IN, CLOSE_SIGN_UP, ENTRANCE, OPEN_ALERT, SIGN_IN, SIGN_UP } from "../types"
+import { CLOSE_ALERT, CLOSE_SIGN_IN, CLOSE_SIGN_UP, ENTRANCE, OPEN_ALERT, SIGN_IN, SIGN_UP } from "../types"
 
 const initialState = {
     signUp : false,
@@ -28,7 +28,7 @@ export const rootReducer = (state = initialState, action) => {
             signIn: !state.signIn,
             signUp: !state.signIn ? false : true 
         }
-        case ClOSE_SIGN_IN : 
+        case CLOSE_SIGN_IN : 
         return {
             ...state,
             signIn: !state.signIn,
