@@ -7,7 +7,6 @@ import Diet from "./pages/Diet/Diet";
 import Home from './pages/Home/Home'
 import Workout from "./pages/Workout/Workout";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FirebaseState } from "./context/firebase/FirebaseState";
 
 
 class App extends Component {
@@ -20,7 +19,6 @@ class App extends Component {
 
   render(){
     return (
-      <FirebaseState>
         <Router>
           <Navbar />
           <div className="container pt-1">
@@ -33,7 +31,6 @@ class App extends Component {
           </div>
           <footer>&copy; 2020 All rights reserved</footer>
         </Router>
-      </FirebaseState>
     );
   }
 }
