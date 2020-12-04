@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Connect from './pages/Connect/Connect'
+import Diet from "./pages/Diet/Diet";
+import Home from './pages/Home/Home'
+import Workout from "./pages/Workout/Workout";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { FirebaseState } from "./context/firebase/FirebaseState";
+
+
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+
+    }
+  }
+
+  render(){
+    return (
+      <FirebaseState>
+        <Router>
+          <Navbar />
+          <div className="container pt-1">
+            <Switch>
+              <Route path="/" exact component={Home}></Route>
+              <Route path="/WorkOut" component={Workout}></Route>
+              <Route path="/Diet" component={Diet}></Route>
+              <Route path="/connect" component={Connect}></Route>
+            </Switch>
+          </div>
+          <footer>&copy; 2020 All rights reserved</footer>
+        </Router>
+      </FirebaseState>
+    );
+  }
 }
 
 export default App;
