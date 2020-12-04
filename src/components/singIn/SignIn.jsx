@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import instance from '../../instance';
-import { ClOSE_SIGN_IN, ENTRANCE, OPEN_ALERT } from '../../store/types';
+import { CLOSE_SIGN_IN, ENTRANCE, OPEN_ALERT } from '../../store/types';
 import Alerts from "../../context/alert/Alerts";
 
 class SignIn extends Component{
