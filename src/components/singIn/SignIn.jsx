@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import instance from '../../instance';
-import { CLOSE_SIGN_IN, ENTRANCE, OPEN_ALERT } from '../../store/types';
+import { CLOSE_SIGN_IN, ENTRANCE, GET_EXERCISE, OPEN_ALERT } from '../../store/types';
 import Alerts from "../../context/alert/Alerts";
 
 class SignIn extends Component{
@@ -33,15 +33,13 @@ class SignIn extends Component{
                         users[i].user.password === this.state.user.password){
                             this.props.entrance(users[i].user);
                             this.props.signInOn();
+                            
                         } else {
                             this.props.openAlert();
-                            } 
+                        } 
                 }
             })
             .catch( err => console.log(err))
-
-        
-
     }
 
     render(){
@@ -71,7 +69,8 @@ class SignIn extends Component{
 const mapStateToProps = (state) => {
     return {
         signI: state.signIn,
-        alerts: state.alert
+        alerts: state.alert,
+        exersiceArr: state.exercise
     }
 }
 
@@ -79,7 +78,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         signInOn: () => dispatch({type: CLOSE_SIGN_IN}),
         entrance: (user) => dispatch({type: ENTRANCE, payload: user}),
-        openAlert: () => dispatch({type: OPEN_ALERT})
+        openAlert: () => dispatch({type: OPEN_ALERT}),
+        getExercise: (arr) => dispatch({type: GET_EXERCISE, payload: arr})
     }
 }
 

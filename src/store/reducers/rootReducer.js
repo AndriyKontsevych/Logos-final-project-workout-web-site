@@ -1,11 +1,14 @@
-import { CLOSE_ALERT, CLOSE_SIGN_IN, CLOSE_SIGN_UP, ENTRANCE, OPEN_ALERT, SIGN_IN, SIGN_UP } from "../types"
+import { CLOSE_ALERT, CLOSE_SIGN_IN, CLOSE_SIGN_UP, ENTRANCE, GET_EXERCISE, GET_FOOD, GET_NUTRITION_SUM, OPEN_ALERT, SIGN_IN, SIGN_UP } from "../types"
 
 const initialState = {
     signUp : false,
     signIn : false,
     curentUser: false,
     successRegistration: false,
-    alert: false 
+    alert: false ,
+    exercise: [],
+    food: [],
+    nutritionSum: {}
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -48,6 +51,21 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 curentUser: action.payload
             }  
+        case GET_EXERCISE : 
+            return {
+                ...state,
+                exercise: action.payload
+            }
+        case GET_FOOD :
+            return {
+                ...state,
+                food: action.payload
+            }
+        case GET_NUTRITION_SUM :
+            return {
+                ...state,
+                nutritionSum: action.payload
+            }
 
         default : 
             return {

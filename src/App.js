@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/Navbar/Navbar";
 
 import Connect from './pages/Connect/Connect'
 import Diet from "./pages/Diet/Diet";
@@ -21,15 +21,12 @@ class App extends Component {
     return (
         <Router>
           <Navbar />
-          <div className="container pt-1">
             <Switch>
               <Route path="/" exact component={Home}></Route>
               <Route path="/WorkOut" component={Workout}></Route>
               <Route path="/Diet" component={Diet}></Route>
               <Route path="/connect" component={Connect}></Route>
             </Switch>
-          </div>
-          <footer>&copy; 2020 All rights reserved</footer>
         </Router>
     );
   }

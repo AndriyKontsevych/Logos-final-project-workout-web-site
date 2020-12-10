@@ -6,3 +6,6 @@ export const ADD_USER = "ADD_USER";
 export const CLOSE_ALERT = "CLOSE_ALERT";
 export const OPEN_ALERT = "OPEN_ALERT";
 export const ENTRANCE = "ENTRANCE";
+export const GET_EXERCISE = "GET_EXERCISE";
+export const GET_FOOD = "GET_FOOD";
+export const GET_NUTRITION_SUM = "GET_NUTRITION_SUM";

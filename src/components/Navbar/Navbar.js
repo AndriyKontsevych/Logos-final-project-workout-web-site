@@ -1,10 +1,11 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { Logo } from './Logo'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Logo } from '../Logo';
+import './style.scss';
 
 export const Navbar = () => (
     <nav className="navbar navbar-dark navbar-expand-lg bg-secondary" >
-        <div className="navbar-brand">
+        <div className="navbar-logo">
             <Logo />
         </div>
          <ul className="navbar-nav">
@@ -13,6 +14,7 @@ export const Navbar = () => (
                className="nav-link"
                to="/"
                exact>
+                   <i className="fas fa-university"></i>&nbsp;
                    Home 
                </NavLink>
             </li>
@@ -20,6 +22,7 @@ export const Navbar = () => (
                <NavLink 
                className="nav-link"
                to="/WorkOut">
+                <i className="fas fa-dumbbell"></i>&nbsp;
                    Work Out
                </NavLink>
             </li>
@@ -27,6 +30,7 @@ export const Navbar = () => (
                <NavLink 
                className="nav-link"
                to="/Diet">
+                <i className="fas fa-utensils"></i>&nbsp;
                    Diet
                </NavLink>
             </li>
@@ -34,6 +38,7 @@ export const Navbar = () => (
                <NavLink 
                className="nav-link"
                to="/Connect">
+                <i className="fas fa-envelope-open"></i>&nbsp;
                    Connect
                </NavLink>
             </li>
