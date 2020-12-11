@@ -1,4 +1,8 @@
-import { CLOSE_ALERT, CLOSE_SIGN_IN, CLOSE_SIGN_UP, ENTRANCE, GET_EXERCISE, GET_FOOD, GET_NUTRITION_SUM, OPEN_ALERT, SIGN_IN, SIGN_UP } from "../types"
+import { CLOSE_ALERT, CLOSE_SIGN_IN, CLOSE_SIGN_UP, ENTRANCE, 
+    GET_EXERCISE, GET_FOOD, GET_NUTRITION_SUM, OPEN_ALERT, 
+    SIGN_IN, SIGN_UP } from "../types"
+
+const storageUser = sessionStorage.getItem("user");
 
 const initialState = {
     signUp : false,
@@ -8,8 +12,20 @@ const initialState = {
     alert: false ,
     exercise: [],
     food: [],
-    nutritionSum: {}
-}
+    nutritionSum: {
+        carbohydrates: 0,
+        fat: 0,
+        protein: 0,
+        energy: 0
+    }
+};
+
+(()=>{
+    if(storageUser){
+        return initialState.curentUser = {firstName: storageUser}; 
+    }
+})();
+
 
 export const rootReducer = (state = initialState, action) => {
 

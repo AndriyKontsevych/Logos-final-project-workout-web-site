@@ -1,5 +1,5 @@
 import React from "react";
-import foodPlate from '../../images/food-plate.png'
+import foodPlate from '../../images/food-plate.jpg'
 import "./style.scss"
 
 export const Food = (props) => {
@@ -9,7 +9,7 @@ export const Food = (props) => {
         <div className="card mb-3" style={{maxWidth: "100%"}}>
             <div className="row g-0">
                 <div className="col-md-4">
-                <img src={foodPlate} alt="img"/>
+                <img src={foodPlate} alt="img" className="plate"/>
                 </div>
                 <div className="col-md-8">
                 <div className="card-body">

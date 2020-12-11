@@ -4,12 +4,17 @@ import axios from 'axios';
 import { Food } from '../../components/Food/Food';
 import { GET_FOOD, GET_NUTRITION_SUM, SIGN_UP } from '../../store/types';
 import "./style.scss";
+import { Loader } from '../../context/loader/Loader';
 
 class Diet extends Component {
+    state = {
+        loading: false
+    }
 
     getApis(){
         let arrFood = [];
         let randomArrFood = [];
+        this.setState({loading: true});
 
           axios.get("https://wger.de/api/v2/ingredientinfo/").then( response => {
 
@@ -39,7 +44,9 @@ class Diet extends Component {
 
               this.props.getNutritionSum(sumnutrition)
               this.props.getFood(arrFood);
-
+              setTimeout(() => {
+                this.setState({loading: false})
+            }, 2000);
           }).catch(function (error) {
               console.error(error);
           });
@@ -51,11 +58,11 @@ class Diet extends Component {
                 { this.props.userS ? 
                 <div>
                     <button onClick={()=> this.getApis()} className="food-btn ">Get meals</button>
-                    <div className="conteiner">
+                    <div className="album py-5 bg-light">
+                        {this.state.loading && <Loader />}
                             {this.props.foods.map(food => (
                                 <Food props={food} key={food.id}/>
                             ))}
-
                             <div className="card mb-3 my-1 energy-sum" style={{maxWidth: "100%"}}>
                                 <div className="row g-0">
                                     <div className="col-md-8">

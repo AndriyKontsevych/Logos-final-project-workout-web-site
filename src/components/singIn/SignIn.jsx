@@ -33,7 +33,7 @@ class SignIn extends Component{
                         users[i].user.password === this.state.user.password){
                             this.props.entrance(users[i].user);
                             this.props.signInOn();
-                            
+                            sessionStorage.setItem("user", users[i].user.firstName);
                         } else {
                             this.props.openAlert();
                         } 

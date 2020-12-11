@@ -4,7 +4,7 @@ import { Logo } from '../Logo';
 import './style.scss';
 
 export const Navbar = () => (
-    <nav className="navbar navbar-dark navbar-expand-lg bg-secondary" >
+    <nav className="navbar navbar-dark navbar-expand-sm bg-secondary" >
         <div className="navbar-logo">
             <Logo />
         </div>

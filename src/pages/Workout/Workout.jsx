@@ -2,13 +2,15 @@ import React, { Component }  from 'react';
 import {connect} from 'react-redux';
 import { GET_EXERCISE, SIGN_UP } from '../../store/types';
 import { Exercise } from '../../components/Exercise/Exercise';
+import { Loader } from '../../context/loader/Loader';
 import instance from '../../instance';
 import './style.scss';
 
 class Workout extends Component {
     state = {
         btn: true,
-        day: ""
+        day: "",
+        loading: false
     }
     
     getApis (){
@@ -16,13 +18,20 @@ class Workout extends Component {
         const restDays = [1,3,5,6];
         const currentDay = new Date().getDay();
         let day = ''; 
-        if(restDays.includes(currentDay)){ day = week[currentDay - 1] } else {day = "restday"};
+        if(restDays.includes(currentDay)){ 
+            day = week[currentDay - 1] 
+        } else { day = "restday" };
+
+        this.setState({loading: true})
 
         instance.get("/exercises.json").then( response => {
             
             const exerciseInfo = response.data[day];
 
             this.props.getExercise(exerciseInfo);
+            setTimeout(() => {
+                this.setState({loading: false})
+            }, 2000);
         }).catch(function (error) {
             console.error(error);
         });
@@ -40,6 +49,7 @@ class Workout extends Component {
                     { this.state.btn ? "Get exercises for today" : `On ${this.state.day} you got to do:`}
                 </button>             
                 <div className="album py-5 bg-light">
+                    {this.state.loading && <Loader />}
                     <Exercise props={this.props.exersiceArr} /> 
                 </div>
               </div> 

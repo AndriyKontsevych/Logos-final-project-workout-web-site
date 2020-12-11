@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { News } from '../../components/News/News';
 import SignUp from '../../components/signUp/SignUp';
 import SignIn from '../../components/singIn/SignIn';
+import { SportNutrition } from '../../components/SportNutrition/SportNutrition';
 import { SIGN_IN, SIGN_UP } from '../../store/types';
 
 import "./style.scss"
@@ -50,6 +51,11 @@ class Home extends Component {
                         <i className="fas fa-arrow-down"></i>
                     </div>
                     <News />
+                    <div className="home-news-info">
+                        Sports nutrition &nbsp;
+                        <i className="fab fa-react"></i>
+                    </div>
+                    <SportNutrition />
                 </div>}
                 <footer>&copy; 2020 All rights reserved</footer>
             </div>
