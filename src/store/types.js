@@ -9,3 +9,4 @@ export const ENTRANCE = "ENTRANCE";
 export const GET_EXERCISE = "GET_EXERCISE";
 export const GET_FOOD = "GET_FOOD";
 export const GET_NUTRITION_SUM = "GET_NUTRITION_SUM";
+export const GET_COMMENTS = "GET_COMMENTS";

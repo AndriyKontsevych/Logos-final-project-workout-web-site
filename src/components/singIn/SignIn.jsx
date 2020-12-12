@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import instance from '../../instance';
-import { CLOSE_SIGN_IN, ENTRANCE, GET_EXERCISE, OPEN_ALERT } from '../../store/types';
+import { CLOSE_SIGN_IN, ENTRANCE, GET_COMMENTS, GET_EXERCISE, OPEN_ALERT } from '../../store/types';
 import Alerts from "../../context/alert/Alerts";
 
 class SignIn extends Component{
@@ -34,6 +34,17 @@ class SignIn extends Component{
                             this.props.entrance(users[i].user);
                             this.props.signInOn();
                             sessionStorage.setItem("user", users[i].user.firstName);
+                            instance.get("/comments.json")
+                                .then( res => {
+                                    let arrComment = [];
+                                    for(let i in res.data){
+                                        arrComment.push(res.data[i].comment);
+                                    }
+                                    let storege = JSON.stringify(arrComment)
+                                    this.props.getComments(arrComment);
+                                    sessionStorage.setItem("comments", storege);
+                                })
+                                .catch(err => console.log(err))
                         } else {
                             this.props.openAlert();
                         } 
@@ -70,7 +81,8 @@ const mapStateToProps = (state) => {
     return {
         signI: state.signIn,
         alerts: state.alert,
-        exersiceArr: state.exercise
+        exersiceArr: state.exercise,
+        commentS: state.comments
     }
 }
 
@@ -79,7 +91,8 @@ const mapDispatchToProps = (dispatch) => {
         signInOn: () => dispatch({type: CLOSE_SIGN_IN}),
         entrance: (user) => dispatch({type: ENTRANCE, payload: user}),
         openAlert: () => dispatch({type: OPEN_ALERT}),
-        getExercise: (arr) => dispatch({type: GET_EXERCISE, payload: arr})
+        getExercise: (arr) => dispatch({type: GET_EXERCISE, payload: arr}),
+        getComments: (obj) => dispatch({type: GET_COMMENTS, payload: obj})
     }
 }
 

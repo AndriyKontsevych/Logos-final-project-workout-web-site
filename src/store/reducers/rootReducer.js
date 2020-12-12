@@ -1,8 +1,10 @@
 import { CLOSE_ALERT, CLOSE_SIGN_IN, CLOSE_SIGN_UP, ENTRANCE, 
+    GET_COMMENTS, 
     GET_EXERCISE, GET_FOOD, GET_NUTRITION_SUM, OPEN_ALERT, 
     SIGN_IN, SIGN_UP } from "../types"
 
 const storageUser = sessionStorage.getItem("user");
+const storageComments = sessionStorage.getItem("comments")
 
 const initialState = {
     signUp : false,
@@ -12,6 +14,7 @@ const initialState = {
     alert: false ,
     exercise: [],
     food: [],
+    comments: [],
     nutritionSum: {
         carbohydrates: 0,
         fat: 0,
@@ -22,7 +25,11 @@ const initialState = {
 
 (()=>{
     if(storageUser){
-        return initialState.curentUser = {firstName: storageUser}; 
+        let comm = JSON.parse(storageComments);
+        return (
+            initialState.curentUser = { firstName: storageUser },
+            initialState.comments = comm
+        )
     }
 })();
 
@@ -81,6 +88,11 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 nutritionSum: action.payload
+            }
+        case GET_COMMENTS : 
+            return {
+                ...state,
+                comments: action.payload
             }
 
         default : 
