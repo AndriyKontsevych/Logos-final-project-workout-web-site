@@ -92,7 +92,7 @@ export const rootReducer = (state = initialState, action) => {
         case GET_COMMENTS : 
             return {
                 ...state,
-                comments: action.payload
+                comments: [ ...action.payload]
             }
 
         default : 

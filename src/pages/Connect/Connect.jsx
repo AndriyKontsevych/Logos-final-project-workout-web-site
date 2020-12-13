@@ -20,7 +20,7 @@ class Connect extends Component {
             
                 instance.post("/comments.json", {comment})
                     .then( res => {
-                        console.log(res);
+
                         this.setState({comment: ""});
                         let comments = this.props.commentS;
                         comments.push(comment);
@@ -42,6 +42,7 @@ class Connect extends Component {
     }
 
     render(){
+
         return(
             <>
             <div className="container pt-1">
