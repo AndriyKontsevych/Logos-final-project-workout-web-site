@@ -20,8 +20,12 @@ class Workout extends Component {
         let day = ''; 
         if(!restDays.includes(currentDay)){ 
             day = week[currentDay - 1] 
+        }  
+        if(currentDay === 0){
+            day = "restday";
         } else { day = "restday" };
 
+        console.log(day);
         this.setState({loading: true})
 
         instance.get("/exercises.json").then( response => {

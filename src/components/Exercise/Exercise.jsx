@@ -3,6 +3,7 @@ import "./style.scss";
 
 export const Exercise = (props) => {
 
+    console.log(props);
     const exersiceArr = props.props;
     const exercises = Object.keys(exersiceArr);
 
