@@ -19,7 +19,7 @@ class Connect extends Component {
             if(this.state.comment.length > 0){
             
                 instance.post("/comments.json", {comment})
-                    .then( res => {
+                    .then( () => {
 
                         this.setState({comment: ""});
                         let comments = this.props.commentS;

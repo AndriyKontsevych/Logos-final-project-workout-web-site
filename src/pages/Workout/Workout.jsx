@@ -18,14 +18,16 @@ class Workout extends Component {
         const restDays = [1,3,5,6];
         const currentDay = new Date().getDay();
         let day = ''; 
-        if(!restDays.includes(currentDay)){ 
-            day = week[currentDay - 1] 
-        }  
         if(currentDay === 0){
             day = "restday";
-        } else { day = "restday" };
+        } else {
+            if(!restDays.includes(currentDay - 1)){ 
+                day = week[currentDay - 1] 
+            } else {
+                 day = "restday" 
+            };
+        } 
 
-        console.log(day);
         this.setState({loading: true})
 
         instance.get("/exercises.json").then( response => {
