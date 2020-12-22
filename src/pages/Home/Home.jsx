@@ -43,7 +43,7 @@ class Home extends Component {
                 <div>
                     <div className="container pt-1">
                         <div className="home-user">
-                           <div>{this.props.curentU.firstName}</div>
+                           <div className="user-name">{this.props.curentU.firstName}</div>
                         </div>
                     </div>
                     <div className="home-news-info">

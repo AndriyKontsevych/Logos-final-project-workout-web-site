@@ -57,3 +57,20 @@
         resize: none;
       }
 }
+
+.form-floating{
+    position: relative;
+
+    .send-btn{
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        border: none;
+        background: none;
+        outline: none;
+    
+        &:hover{
+            color: #6c757d;
+        }
+}
+}
